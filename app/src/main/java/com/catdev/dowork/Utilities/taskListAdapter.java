@@ -34,8 +34,6 @@ public class taskListAdapter extends RecyclerView.Adapter<taskListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         TaskListItemHolder item = taskItemList.get(i);
-        //TODO wyswietlanie zdjec nie dziala :(
-        viewHolder.image.setImageResource(R.drawable.ic_camera_alt_black_24dp);
         viewHolder.title.setText(item.getTitle());
         viewHolder.shortenedDesc.setText(item.getShortenedDesc());
     }
@@ -46,14 +44,11 @@ public class taskListAdapter extends RecyclerView.Adapter<taskListAdapter.ViewHo
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView image;
         public TextView title;
         public TextView shortenedDesc;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            image = itemView.findViewById(R.id.taskImageView);
             title = itemView.findViewById(R.id.titleTextView);
             shortenedDesc = itemView.findViewById(R.id.descTextView);
         }
