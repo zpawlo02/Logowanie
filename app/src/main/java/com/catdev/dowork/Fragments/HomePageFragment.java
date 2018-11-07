@@ -48,7 +48,7 @@ public class HomePageFragment extends Fragment {
         adapter = new taskListAdapter(itemList, this.getContext());
         taskListView.setAdapter(adapter);
 
-        loadTasks();
+        updateTasks();
 
         return view;
     }
@@ -58,12 +58,12 @@ public class HomePageFragment extends Fragment {
         public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
             if (!recyclerView.canScrollVertically(1)) {
-                loadTasks();
+                updateTasks();
             }
         }
     };
 
-    private void loadTasks() {
+    private void updateTasks() {
         final ArrayList<String> titles = new ArrayList<>();
         final ArrayList<String> descriptions = new ArrayList<>();
         ParseQuery<ParseObject> taskListQuery = new ParseQuery<>("Tasks");
