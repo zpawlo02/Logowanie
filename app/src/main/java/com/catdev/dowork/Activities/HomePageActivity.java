@@ -55,7 +55,6 @@ public class HomePageActivity extends AppCompatActivity implements NavigationVie
         Log.i("admin", user.getBoolean("isAdmin") + "");
 
         //Components
-        photoView = findViewById(R.id.PhotoView);
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
         headerView = navigationView.getHeaderView(0);
