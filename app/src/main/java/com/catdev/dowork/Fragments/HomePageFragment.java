@@ -1,10 +1,8 @@
 package com.catdev.dowork.Fragments;
 
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,11 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.QuickContactBadge;
 import android.widget.Toast;
 
-import com.catdev.dowork.Activities.HomePageActivity;
 import com.catdev.dowork.R;
 import com.catdev.dowork.Utilities.TaskListItemHolder;
 import com.catdev.dowork.Utilities.taskListAdapter;
@@ -27,12 +22,16 @@ import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class HomePageFragment extends Fragment {
     RecyclerView taskListView;
-    ArrayList<TaskListItemHolder> itemList;
+    RecyclerView.Adapter adapter;
+    ArrayList<TaskListItemHolder> itemList = new ArrayList<>(); ;
     ArrayList<String> itemListId;
+
+    int amountOfTasksToLoadInOneUpdate = 4;
+    int amountOfTaskDisplayed = 0;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,20 +43,36 @@ public class HomePageFragment extends Fragment {
         taskListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         itemListId = new ArrayList<>();
+        taskListView.addOnScrollListener(ReachedBottomListener);
 
-        updateTasks();
+        adapter = new taskListAdapter(itemList, this.getContext());
+        taskListView.setAdapter(adapter);
+
+        loadTasks();
 
         return view;
     }
 
-    private void updateTasks () {
+    private RecyclerView.OnScrollListener ReachedBottomListener = new RecyclerView.OnScrollListener() {
+        @Override
+        public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+            super.onScrolled(recyclerView, dx, dy);
+            if (!recyclerView.canScrollVertically(1)) {
+                loadTasks();
+            }
+        }
+    };
+
+    private void loadTasks() {
         final ArrayList<String> titles = new ArrayList<>();
         final ArrayList<String> descriptions = new ArrayList<>();
-        itemList = new ArrayList<>();
         ParseQuery<ParseObject> taskListQuery = new ParseQuery<>("Tasks");
+        taskListQuery.setSkip(amountOfTaskDisplayed);
         taskListQuery.whereEqualTo("reservationBy", "");
         taskListQuery.whereEqualTo("isCompleted", false);
         taskListQuery.addDescendingOrder("createdAt");
+        taskListQuery.setLimit(amountOfTasksToLoadInOneUpdate);
+        amountOfTaskDisplayed += amountOfTasksToLoadInOneUpdate;
 
         taskListQuery.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -86,9 +101,7 @@ public class HomePageFragment extends Fragment {
     private void displayTasks(ArrayList<String> titles, ArrayList<String> descriptions) {
         for(int i = 0; i < titles.size() ; i++) {
             itemList.add(new TaskListItemHolder(this.getContext(), titles.get(i), descriptions.get(i)));
+            adapter.notifyDataSetChanged();
         }
-
-        RecyclerView.Adapter adapter = new taskListAdapter(itemList, this.getContext());
-        taskListView.setAdapter(adapter);
     }
 }
