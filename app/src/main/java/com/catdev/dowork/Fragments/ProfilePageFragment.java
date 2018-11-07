@@ -17,6 +17,7 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -31,20 +32,17 @@ public class ProfilePageFragment extends Fragment {
         nameTextView = view.findViewById(R.id.nameTextView);
         ratingTextView = view.findViewById(R.id.ratingTextView);
 
-        ParseQuery<ParseObject> query = new ParseQuery("User");
-        query.whereEqualTo("objectId", HomePageActivity.getProfileIdToShow());
-        query.findInBackground(new FindCallback<ParseObject>() {
+        ParseQuery<ParseUser> userQurey = ParseUser.getQuery();
+        userQurey.whereEqualTo("objectId", HomePageActivity.getProfileIdToShow());
+        userQurey.findInBackground(new FindCallback<ParseUser>() {
             @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-
+            public void done(List<ParseUser> objects, ParseException e) {
                 if(e == null) {
-                    //TODO nie dziala
                     ParseObject object = objects.get(0);
                     nameTextView.setText(object.getString("username"));
                 }
             }
         });
-
 
         return view;
     }
