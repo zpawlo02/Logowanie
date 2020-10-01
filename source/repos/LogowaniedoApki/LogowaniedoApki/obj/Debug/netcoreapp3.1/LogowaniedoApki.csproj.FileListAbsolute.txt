@@ -1,0 +1,15 @@
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\bin\Debug\netcoreapp3.1\LogowaniedoApki.exe
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\bin\Debug\netcoreapp3.1\LogowaniedoApki.deps.json
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\bin\Debug\netcoreapp3.1\LogowaniedoApki.runtimeconfig.json
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\bin\Debug\netcoreapp3.1\LogowaniedoApki.runtimeconfig.dev.json
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\bin\Debug\netcoreapp3.1\LogowaniedoApki.dll
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\bin\Debug\netcoreapp3.1\LogowaniedoApki.pdb
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\obj\Debug\netcoreapp3.1\LogowaniedoApki.csprojAssemblyReference.cache
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\obj\Debug\netcoreapp3.1\LogowaniedoApki.Form1.resources
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\obj\Debug\netcoreapp3.1\LogowaniedoApki.csproj.GenerateResource.cache
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\obj\Debug\netcoreapp3.1\LogowaniedoApki.AssemblyInfoInputs.cache
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\obj\Debug\netcoreapp3.1\LogowaniedoApki.AssemblyInfo.cs
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\obj\Debug\netcoreapp3.1\LogowaniedoApki.csproj.CoreCompileInputs.cache
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\obj\Debug\netcoreapp3.1\LogowaniedoApki.dll
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\obj\Debug\netcoreapp3.1\LogowaniedoApki.pdb
+C:\Users\Paweł\source\repos\LogowaniedoApki\LogowaniedoApki\obj\Debug\netcoreapp3.1\LogowaniedoApki.genruntimeconfig.cache
